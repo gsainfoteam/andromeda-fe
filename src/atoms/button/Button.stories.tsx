@@ -21,8 +21,8 @@ Outlined.args = {
   variant: "outlined",
 };
 
-export const Contained = Template.bind({});
-Contained.args = {
+export const Deselected = Template.bind({});
+Deselected.args = {
   children: "Button",
-  variant: "contained",
+  variant: "deselected",
 };

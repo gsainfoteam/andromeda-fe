@@ -18,21 +18,36 @@ const fadeIn = keyframes`
   }
 `;
 
+const CTABtnWrap = styled.div`
+  opacity: 0;
+  animation: ${fadeIn} 1s forwards;
+  animation-delay: 4s;
+  transform: translateY(210px);
+`;
+
 const moveY = keyframes`
   from {
     transform: translateY(0);
   }
 
   to {
-    transform: translateY(80px);
+    transform: translateY(90px);
   }
 `;
 
 const TextAnimation = styled.img`
   width: 300px;
   position: absolute;
-  animation: ${moveY} 1s ease-in-out forwards;
+  animation: ${moveY} 0.5s ease-out forwards;
   animation-delay: 4s;
+`;
+
+const TextDes = styled(Text)`
+  opacity: 0;
+  position: absolute;
+  transform: translateY(125px);
+  animation: ${fadeIn} 1s forwards;
+  animation-delay: 4.5s;
 `;
 
 const GalaxySvg = styled(Area)`
@@ -48,16 +63,26 @@ const Onboarding = () => {
         height: "100vh",
       }}
     >
-      <GalaxySvg style={{ zIndex: 1 }}>
-        <Galaxy fill={colorSet.galactic_gradient_1} />
-        <Belt fill={colorSet.galactic_gradient_1} />
+      <GalaxySvg style={{ zIndex: 2 }}>
+        <Galaxy />
+        <Belt />
       </GalaxySvg>
       <TextAnimation src={TextAnim} />
-      <CTAButton style={{ zIndex: 1 }}>
-        <Text font={Font.Bold} color={colorSet.colorless} size="1rem">
-          시작하기
-        </Text>
-      </CTAButton>
+      <TextDes
+        font={Font.Bold}
+        size="0.9rem"
+        color={colorSet.colorless}
+        style={{ zIndex: 1 }}
+      >
+        지스트 수강평가의 새로운 지평
+      </TextDes>
+      <CTABtnWrap>
+        <CTAButton style={{ zIndex: 1 }}>
+          <Text font={Font.Bold} color={colorSet.colorless} size="1.2rem">
+            시작하기
+          </Text>
+        </CTAButton>
+      </CTABtnWrap>
     </Area>
   );
 };

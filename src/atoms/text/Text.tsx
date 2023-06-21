@@ -19,7 +19,7 @@ const Text = styled.p<TextProps>`
       case Font.Black:
         return css`
           font-family: "Noto Sans KR", sans-serif;
-          font-weight: 900;
+          font-weight: 800;
         `;
       case Font.Bold:
         return css`
@@ -38,8 +38,7 @@ const Text = styled.p<TextProps>`
         `;
       case Font.Schweiz:
         return css`
-          font-family: "Aharoni-Bold", sans-serif;
-          font-weight: 700;
+          font-family: "Schweiz", sans-serif;
         `;
     }
   }}
