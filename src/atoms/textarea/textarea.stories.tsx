@@ -1,8 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
-import React, { ChangeEvent } from "react";
 
 import Textarea from "./Textarea";
-//import Text from '../text/Text'
 
 export default {
   title: "atoms/textarea/textarea",
