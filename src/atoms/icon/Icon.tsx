@@ -5,8 +5,10 @@ import addImgBlack from "./assets/addImgBlack.svg";
 import arrowCircleLeftDeselected from "./assets/arrowCircleRightDeselected.svg";
 import arrowCircleLeftPrimary from "./assets/arrowCircleRightPrimary.svg";
 import arrowLeftWhite from "./assets/arrowLeftWhite.svg";
+import arrowSimpleDownWhite from "./assets/arrowSimpleDownWhite.svg";
 import bellPrimary from "./assets/bellPrimary.svg";
 import documentBlack from "./assets/documentBlack.svg";
+import filterGray from "./assets/filterGray.svg";
 import githubWhite from "./assets/githubWhite.svg";
 import instagramWhite from "./assets/instagramWhite.svg";
 import linesBlack from "./assets/linesBlack.svg";
@@ -144,6 +146,17 @@ const ArrowDownWhite = ({ width, height }: EachIconProps) => {
   );
 };
 
+const ArrowSimpleDownWhite = ({ width, height }: EachIconProps) => {
+  return (
+    <IconImg
+      src={arrowSimpleDownWhite}
+      alt={"arrow simple down white icon"}
+      cssWidth={width}
+      cssHeight={height}
+    />
+  );
+};
+
 const BellPrimary = ({ width, height }: EachIconProps) => {
   return (
     <IconImg
@@ -160,6 +173,17 @@ const DocumentBlack = ({ width, height }: EachIconProps) => {
     <IconImg
       src={documentBlack}
       alt={"document black icon"}
+      cssWidth={width}
+      cssHeight={height}
+    />
+  );
+};
+
+const FilterGray = ({ width, height }: EachIconProps) => {
+  return (
+    <IconImg
+      src={filterGray}
+      alt={"filter gray icon"}
       cssWidth={width}
       cssHeight={height}
     />
@@ -263,8 +287,10 @@ Icon.ArrowLeftWhite = ArrowLeftWhite;
 Icon.ArrowRightWhite = ArrowRightWhite;
 Icon.ArrowUpWhite = ArrowUpWhite;
 Icon.ArrowDownWhite = ArrowDownWhite;
+Icon.ArrowSimpleDownWhite = ArrowSimpleDownWhite;
 Icon.BellPrimary = BellPrimary;
 Icon.DocumentBlack = DocumentBlack;
+Icon.FilterGray = FilterGray;
 Icon.GithubWhite = GithubWhite;
 Icon.InstagramWhite = InstagramWhite;
 Icon.LinesBlack = LinesBlack;
