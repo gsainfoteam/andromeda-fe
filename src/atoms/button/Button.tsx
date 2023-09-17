@@ -57,7 +57,8 @@ const Button = styled.button<ButtonProps>`
         return css`
           border: none;
           box-shadow: none;
-          color: ${colorSet.card};
+          background: ${colorSet.galactic_green};
+          color: ${colorSet.colorless};
 
           :hover {
             box-shadow: inset rgba(0, 0, 0, 0.15) 0px 0px 0px 40px;
