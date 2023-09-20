@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Icons from "src/assets/Icons";
+import Font from "src/styles/fonts";
 import styled from "styled-components";
 
 import colorSet from "../../styles/color-set";
-import Icon from "../icon/Icon";
+import Text from "../text/Text";
 
 interface SelectProps {
   minWidth?: React.CSSProperties["width"];
@@ -80,8 +82,10 @@ const SelectButton = ({
         minWidth={minWidth}
         isSelected={true}
       >
-        {selected}
-        <Icon.ArrowSimpleDownWhite width="22px" height="22px" />
+        <Text font={Font.Medium} size="20px" color={colorSet.colorless}>
+          {selected}
+        </Text>
+        <Icons.Arrow size="22px" direction="DOWN" fill={colorSet.colorless} />
       </Button>
       {isActive && (
         <DropdownWrapper

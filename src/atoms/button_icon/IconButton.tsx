@@ -1,10 +1,10 @@
 import React from "react";
+import Icons from "src/assets/Icons";
+import colorSet from "src/styles/color-set";
+import Font from "src/styles/fonts";
 import styled from "styled-components";
 
-import Icon from "../icon/Icon";
 import Text from "../text/Text";
-import Font from "src/styles/fonts";
-import colorSet from "src/styles/color-set";
 
 interface UniProps {
   width?: React.CSSProperties["width"];
@@ -49,7 +49,7 @@ const IconButton = ({ width, height, text, fontSize }: ButtonProps) => {
       <Text color={colorSet.titleText} font={Font.Medium} size={fontSize}>
         {text}
       </Text>
-      <Icon.FilterGray height={`calc(${height}*0.8)`} />
+      <Icons.Filter size={`calc(${height}*0.8)`} fill={colorSet.titleText} />
     </Wrapper>
   );
 };
