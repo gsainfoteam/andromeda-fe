@@ -19,10 +19,6 @@ const Item = styled.button<{
   padding: 7px 15px;
   background-color: ${({ isSelected }) =>
     isSelected ? colorSet.deselected : colorSet.card};
-  font-family: Noto Sans KR, sans-serif;
-  font-weight: ${({ isSelected }) => (isSelected ? "700" : "500")};
-  font-size: 20px;
-  color: ${colorSet.colorless};
   transition: 0.1s;
   :hover {
     cursor: pointer;
@@ -31,7 +27,6 @@ const Item = styled.button<{
 
 const Button = styled(Item)<{ minWidth: React.CSSProperties["width"] }>`
   min-width: ${({ minWidth }) => (minWidth ? minWidth : undefined)};
-  width: fit-content;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -101,7 +96,9 @@ const SelectButton = ({
                 onClick={handleClickOption}
                 isSelected={option === selected}
               >
-                {option}
+                <Text font={Font.Medium} size="20px" color={colorSet.colorless}>
+                  {option}
+                </Text>
               </Option>
             );
           })}
