@@ -14,6 +14,7 @@ interface IconDirectionProps {
   direction?: keyof typeof IconDirection;
 }
 
+/* eslint-disable */
 const Icons = ({ size, fill }: IconProps) => {
   return;
 };
