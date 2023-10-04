@@ -15,6 +15,12 @@ Default.args = {
   children: "Button",
 };
 
+export const Contained = Template.bind({});
+Contained.args = {
+  children: "Button",
+  variant: "contained",
+};
+
 export const Outlined = Template.bind({});
 Outlined.args = {
   children: "Button",

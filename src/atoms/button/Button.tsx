@@ -6,6 +6,7 @@ import colorSet from "../../styles/color-set";
 enum Variant {
   outlined = "outlined",
   deselected = "deselected",
+  contained = "contained",
 }
 
 interface ButtonProps {
@@ -29,21 +30,24 @@ const Button = styled.button<ButtonProps>`
     transform: scale(0.95);
   }
 
-  box-shadow: 0 0 0 2px
-    ${({ gradientBorder }) =>
-      gradientBorder ? gradientBorder : colorSet.galactic_green}
-    inset;
-  color: ${({ gradientBorder }) =>
-    gradientBorder ? gradientBorder : colorSet.galactic_green};
-
-  background: ${({ gradient }) =>
-    gradient ? gradient : colorSet.galactic_gradient_1};
-
   ${({ variant }) => {
     switch (variant) {
+      case Variant.contained:
+        return css`
+          border: none;
+          box-shadow: none;
+          background: ${colorSet.galactic_green};
+          color: ${colorSet.colorless};
+
+          :hover {
+            box-shadow: inset rgba(0, 0, 0, 0.15) 0px 0px 0px 40px;
+          }
+        `;
+
       case Variant.outlined:
         return css`
           background: transparent;
+          box-shadow: 0 0 0 2px ${colorSet.galactic_green} inset;
         `;
 
       case Variant.deselected:
@@ -55,13 +59,8 @@ const Button = styled.button<ButtonProps>`
 
       default:
         return css`
-          border: none;
           box-shadow: none;
-          color: ${colorSet.card};
-
-          :hover {
-            box-shadow: inset rgba(0, 0, 0, 0.15) 0px 0px 0px 40px;
-          }
+          background: transparent;
         `;
     }
   }}
