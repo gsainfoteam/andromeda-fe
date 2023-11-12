@@ -3,6 +3,7 @@ import Text from "src/atoms/text/Text";
 import colorSet from "src/styles/color-set";
 import Font from "src/styles/fonts";
 import { IReviewList } from "./data";
+import Star from "src/atoms/star/Star";
 
 interface ReviewInfoProps {
   review: IReviewList;
@@ -11,9 +12,12 @@ interface ReviewInfoProps {
 const ReviewInfo = ({ review }: ReviewInfoProps) => {
   return (
     <Flex flexDirection="column" gap="6px">
-      <Text color={colorSet.titleText} font={Font.Bold} size="20px">
-        {review.year}년도 {review.semester}학기 수강자
-      </Text>
+      <Flex gap="15px">
+        <Text color={colorSet.titleText} font={Font.Bold} size="20px">
+          {review.year}년도 {review.semester}학기 수강자
+        </Text>
+        <Star color="green" STAR_RATE={5.0} starsize={20} />
+      </Flex>
       <Text
         color={colorSet.colorless}
         font={Font.Medium}

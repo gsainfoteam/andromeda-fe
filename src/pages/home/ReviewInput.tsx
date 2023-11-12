@@ -9,6 +9,7 @@ import Input from "src/atoms/input/Input";
 import Button, { ButtonVariant } from "src/atoms/button/Button";
 import Spacer from "src/atoms/spacer/Spacer";
 import { IReviewList, reviewList } from "./data";
+import Star from "src/atoms/star/Star";
 // import Textarea from "src/atoms/textarea/Textarea";
 
 interface ReviewInputProps {
@@ -35,37 +36,41 @@ const ReviewInput = ({ width }: ReviewInputProps) => {
       }}
     >
       <Flex height="100%" flexDirection="column" justifyContent="space-between">
-        <Flex gap="10px" alignItems="center">
-          <SelectButton
-            minWidth="120px"
-            placeholder={yearList[yearList.length - 1]}
-            options={yearList}
-          />
-          <Text
-            color={colorSet.colorless}
-            font={Font.Bold}
-            size="20px"
-            style={{ marginRight: "15px" }}
-          >
-            년도
-          </Text>
-          <SelectButton
-            minWidth="120px"
-            placeholder={semesterList[0]}
-            options={semesterList}
-          />
-          <Text
-            color={colorSet.colorless}
-            font={Font.Bold}
-            size="20px"
-            style={{ marginRight: "15px" }}
-          >
-            학기
-          </Text>
-          <Text color={colorSet.colorless} font={Font.Bold} size="20px">
-            수강
-          </Text>
+        <Flex justifyContent="space-between">
+          <Flex gap="10px" alignItems="center">
+            <SelectButton
+              minWidth="120px"
+              placeholder={yearList[yearList.length - 1]}
+              options={yearList}
+            />
+            <Text
+              color={colorSet.colorless}
+              font={Font.Bold}
+              size="20px"
+              style={{ marginRight: "15px" }}
+            >
+              년도
+            </Text>
+            <SelectButton
+              minWidth="120px"
+              placeholder={semesterList[0]}
+              options={semesterList}
+            />
+            <Text
+              color={colorSet.colorless}
+              font={Font.Bold}
+              size="20px"
+              style={{ marginRight: "15px" }}
+            >
+              학기
+            </Text>
+            <Text color={colorSet.colorless} font={Font.Bold} size="20px">
+              수강
+            </Text>
+          </Flex>
+          <Star color="green" STAR_RATE={0.0} starsize={20} />
         </Flex>
+
         <Input
           hilight={false}
           height="15px"
