@@ -58,7 +58,12 @@ const SearchButton = styled.button`
   outline: none;
 `;
 
-const SearchInput = (props: SearchInputProps) => {
+const SearchInput = ({
+  width,
+  height,
+  placeholder,
+  value,
+}: SearchInputProps) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -71,12 +76,12 @@ const SearchInput = (props: SearchInputProps) => {
   };
 
   return (
-    <StyledSearchInput alignItems="center">
+    <StyledSearchInput alignItems="center" width={width} height={height}>
       <Input
         type="text"
         value={searchValue}
         onChange={handleInputChange}
-        placeholder={props.placeholder}
+        placeholder={placeholder}
       />
       <SearchButton onClick={handleSearch}>
         <Icons.Search size={"18px"} fill={colorSet.galactic_purple} />

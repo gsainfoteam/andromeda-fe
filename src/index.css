@@ -5,8 +5,14 @@
 }
 
 @font-face {
-  font-family: 'Schweiz';
-  src: url('../src/assets/fonts/Schweiz.otf') format('opentype');
+  font-family: "Schweiz";
+  src: url("../src/assets/fonts/Schweiz.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+}
+
+div,
+span,
+svg {
+  background-color: inherit;
 }

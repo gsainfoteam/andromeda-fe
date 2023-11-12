@@ -2,13 +2,13 @@ import React from "react";
 import styled, { css } from "styled-components";
 import colorSet from "src/styles/color-set";
 
-enum Variant {
+export enum DividerVariant {
   bold = "bold",
 }
 
 interface DividerProps {
   width?: React.CSSProperties["width"];
-  variant?: Variant;
+  variant?: DividerVariant;
 }
 
 const Divider = styled.hr<DividerProps>`
@@ -19,9 +19,9 @@ const Divider = styled.hr<DividerProps>`
 
   ${({ variant }) => {
     switch (variant) {
-      case Variant.bold:
+      case DividerVariant.bold:
         return css`
-          border-top-width: 5px;
+          border-top-width: 4px;
           border-top-color: ${colorSet.deselected};
         `;
 

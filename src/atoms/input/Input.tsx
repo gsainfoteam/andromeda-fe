@@ -7,7 +7,7 @@ import Font from "../../styles/fonts";
 import Text from "../text/Text";
 
 interface LabelProps {
-  label: string;
+  label?: string;
 }
 
 interface HilightProps {
@@ -76,13 +76,12 @@ const Input: React.FC<InputProps> = ({
     }
   `;
 
-  const Hr_Styled = styled.hr<HilightProps>`
+  const Hr_Styled = styled.hr`
     border: 0px;
     width: inherit; // inherit는 부모 태그의 width를 상속받음, 즉 div 태그의 width를 그대로 이어받게 됨
     margin: 0px;
     border-top: 1px solid;
-    border-top-color: ${(props) =>
-      props.hilight ? colorSet.galactic_green : colorSet.colorless};
+    border-top-color: ${colorSet.galactic_green};
   `;
 
   return (
@@ -108,7 +107,7 @@ const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         hilight={hilight}
       />
-      <Hr_Styled hilight={hilight} />
+      {hilight && <Hr_Styled />}
     </div>
   );
 };

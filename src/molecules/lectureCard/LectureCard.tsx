@@ -1,80 +1,86 @@
 import React from "react";
 import styled from "styled-components";
 
-import Card from "../../atoms/card/Card";
+import Card, { CardVariant } from "../../atoms/card/Card";
 import colorSet from "src/styles/color-set";
+import Text from "src/atoms/text/Text";
+import Font from "src/styles/fonts";
+import { ILectureList } from "src/pages/home/data";
+
+interface LectureCardProps extends HilightProps, UniProps, ContentProps {}
 
 interface HilightProps {
   hilight: boolean;
 }
-
 interface UniProps {
-  width: string;
-  height: string;
+  width?: React.CSSProperties["width"];
+  height?: React.CSSProperties["height"];
 }
-
 interface ContentProps {
-  title: string;
-  departure: string;
-  professor: string;
-  lectureCode: string;
+  lecture: ILectureList;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-interface LectureCardProps extends HilightProps, UniProps, ContentProps {}
+const InfoText = styled(Text)`
+  margin-bottom: 6px;
+  span {
+    color: ${colorSet.titleText};
+    font-weight: 400;
+    margin-right: 7px;
+  }
+`;
 
 const LectureCard: React.FC<LectureCardProps> = ({
   hilight,
   width,
   height,
-  title,
-  departure,
-  professor,
-  lectureCode,
+  lecture,
+  onClick,
 }) => {
-  const InnerText = styled.div<HilightProps & { type: "title" | "detail" }>`
-    font-family: Noto Sans KR, sans-serif;
-    font-weight: ${(props) => (props.type == "title" ? "700" : "500")};
-    font-size: ${(props) => (props.type == "title" ? "32px" : "24px")};
-    color: ${(props) =>
-      props.hilight
-        ? colorSet.galactic_green
-        : colorSet.colorless}; // hilight 모드이면 galactic_green, 아니면 colorless
-  `;
   return (
-    <div>
-      <Card
-        width={width}
-        height={height}
-        hilight={hilight}
-        style={{ padding: "23px 30px", borderRadius: "25px" }}
+    <Card
+      width={width}
+      height={height}
+      variant={hilight ? CardVariant.hilightedGreen : undefined}
+      style={{
+        padding: "23px 28px",
+        borderRadius: "25px",
+      }}
+      onClick={onClick}
+    >
+      <Text
+        color={hilight ? colorSet.galactic_green : colorSet.colorless}
+        font={Font.Bold}
+        size="28px"
+        style={{ marginBottom: "10px" }}
       >
-        <InnerText
-          hilight={hilight}
-          type={"title"}
-          style={{ marginBottom: "5px" }}
-        >
-          {title}
-        </InnerText>
-        <InnerText hilight={hilight} type={"detail"}>
-          <span style={{ color: colorSet.titleText, fontWeight: "400" }}>
-            분류{" "}
-          </span>
-          {departure}
-        </InnerText>
-        <InnerText hilight={hilight} type={"detail"}>
-          <span style={{ color: colorSet.titleText, fontWeight: "400" }}>
-            교수명{" "}
-          </span>
-          {professor}
-        </InnerText>
-        <InnerText hilight={hilight} type={"detail"}>
-          <span style={{ color: colorSet.titleText, fontWeight: "400" }}>
-            과목코드{" "}
-          </span>
-          {lectureCode}
-        </InnerText>
-      </Card>
-    </div>
+        {lecture.title}
+      </Text>
+      <InfoText
+        color={hilight ? colorSet.galactic_green : colorSet.colorless}
+        font={Font.Medium}
+        size="20px"
+      >
+        <span>분류</span>
+        {lecture.departure}
+      </InfoText>
+      <InfoText
+        color={hilight ? colorSet.galactic_green : colorSet.colorless}
+        font={Font.Medium}
+        size="20px"
+      >
+        <span>교수명</span>
+        {lecture.professor}
+      </InfoText>
+      <InfoText
+        color={hilight ? colorSet.galactic_green : colorSet.colorless}
+        font={Font.Medium}
+        size="20px"
+      >
+        <span>과목코드</span>
+        {lecture.lectureCode}
+      </InfoText>
+    </Card>
   );
 };
 
