@@ -18,12 +18,12 @@ export const Green = Template.bind({});
 Green.args = {
   color: "green",
   STAR_RATE: 3.7, //default STAR_RATE
-  width: 46, //default width & height (width==height)
+  starsize: 46, //default width & height (width==height)
 };
 
 export const Purple = Template.bind({});
 Purple.args = {
   color: "purple",
   STAR_RATE: 3.7, //default STAR_RATE
-  width: 46, //default width & height (width==height)
+  starsize: 46, //default width & height (width==height)
 };

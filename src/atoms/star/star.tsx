@@ -2,19 +2,13 @@ import styled from "styled-components";
 import colorSet from "src/styles/color-set";
 import { useState, useEffect } from "react";
 import defaults from "src/styles/defaults";
+import Flex from "../containers/flex/Flex";
 
 export interface StarProps {
   color?: "green" | "purple";
   STAR_RATE: number;
-  width: number;
+  starsize: number;
 }
-
-const StarRateWrap = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  border-radius: ${defaults.borderRadius};
-`;
 
 const Star = (props: StarProps) => {
   const DefaultColor = "#1A1A1A";
@@ -43,16 +37,21 @@ const Star = (props: StarProps) => {
       : `${colorSet.galactic_purple}`;
 
   return (
-    <StarRateWrap>
+    <Flex
+      alignItems="center"
+      gap="6px"
+      style={{ borderRadius: defaults.borderRadius }}
+    >
       {STAR_IDX_ARR.map((item, idx) => {
         return (
           <span className="star_icon" key={`${item}_${idx}`}>
             <svg
               xmlns="hhttp://www.w3.org/2000/svg"
-              width={props.width}
-              height={props.width}
+              width={props.starsize}
+              height={props.starsize}
               viewBox="0 0 576 512"
               fill={DefaultColor}
+              style={{ verticalAlign: "middle" }}
             >
               <clipPath id={`${item}StarClip`}>
                 <rect width={`${ratesResArr[idx]}`} height="512" />
@@ -72,7 +71,7 @@ const Star = (props: StarProps) => {
           </span>
         );
       })}
-    </StarRateWrap>
+    </Flex>
   );
 };
 
