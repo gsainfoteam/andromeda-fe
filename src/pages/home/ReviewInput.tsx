@@ -9,7 +9,7 @@ import Input from "src/atoms/input/Input";
 import Button, { ButtonVariant } from "src/atoms/button/Button";
 import Spacer from "src/atoms/spacer/Spacer";
 import { IReviewList, reviewList } from "./data";
-import Star from "src/atoms/star/Star";
+import StarInput from "src/atoms/starinput/StarInput";
 // import Textarea from "src/atoms/textarea/Textarea";
 
 interface ReviewInputProps {
@@ -68,7 +68,7 @@ const ReviewInput = ({ width }: ReviewInputProps) => {
               수강
             </Text>
           </Flex>
-          <Star color="green" STAR_RATE={0.0} starsize={20} />
+          <StarInput color="green" starsize={20} />
         </Flex>
 
         <Input
