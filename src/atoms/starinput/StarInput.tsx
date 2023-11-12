@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
 import colorSet from "src/styles/color-set";
-import { useState, useEffect } from "react";
 import defaults from "src/styles/defaults";
 import Flex from "../containers/flex/Flex";
 
@@ -8,36 +7,49 @@ import { v4 as uuidv4 } from "uuid"; // UUID 라이브러리
 
 export interface StarProps {
   color?: "green" | "purple";
-  STAR_RATE: number;
   starsize: number;
+  ablehalf?: boolean;
 }
 
-const Star = (props: StarProps) => {
+const StarInput = ({ color, starsize, ablehalf }: StarProps) => {
   const uniqueId = uuidv4();
-  const DefaultColor = "#1A1A1A";
-  const RATE = props.STAR_RATE;
   const STAR_IDX_ARR = ["first", "second", "third", "fourth", "last"]; // 5개 별의 고유 id
+
+  const default_rating = ablehalf ? 0.5 : 1.0;
+
+  const [rating, setRating] = useState(default_rating);
   const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
-  const calcStarRates = () => {
-    let tempStarRatesArr = [0, 0, 0, 0, 0];
-    let starVerScore = (RATE * 576 * 5) / 5; // 별 한 개 당 width가 576
-    let idx = 0;
-    while (starVerScore > 576) {
-      // 별 하나하나에 채워질 width를 지정
-      tempStarRatesArr[idx] = 576;
-      idx += 1;
-      starVerScore -= 576;
-    }
-    tempStarRatesArr[idx] = starVerScore;
-    return tempStarRatesArr;
+
+  const handleStarClick = (
+    index: number,
+    event: React.MouseEvent<SVGSVGElement, MouseEvent>,
+  ) => {
+    const clickX =
+      event.clientX - event.currentTarget.getBoundingClientRect().left;
+    const newRating = index + (clickX > starsize / 2 ? 1.0 : default_rating);
+    setRating(newRating);
   };
+
+  const calculateRatesResArr = (rating: number) => {
+    return [0, 1, 2, 3, 4].map((idx) => {
+      if (rating >= idx + 1) {
+        return 576; // Full star
+      } else if (rating > idx && rating < idx + 1) {
+        return 288; // Half star
+      } else {
+        return 0; // Empty star
+      }
+    });
+  };
+
   useEffect(() => {
-    setRatesResArr(calcStarRates);
-  }, []);
+    const newRatesResArr = calculateRatesResArr(rating);
+    setRatesResArr(newRatesResArr);
+  }, [rating]);
+
+  const DefaultColor = "#1A1A1A";
   const DefColor =
-    props.color == "green"
-      ? `${colorSet.galactic_green}`
-      : `${colorSet.galactic_purple}`;
+    color === "green" ? colorSet.galactic_green : colorSet.galactic_purple;
 
   return (
     <Flex
@@ -50,11 +62,16 @@ const Star = (props: StarProps) => {
           <span className="star_icon" key={`${item}_${idx}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width={props.starsize}
-              height={props.starsize}
+              width={starsize}
+              height={starsize}
               viewBox="0 0 576 512"
               fill={DefaultColor}
-              style={{ verticalAlign: "middle" }}
+              style={{
+                cursor: "pointer",
+                // fill: idx < Math.ceil(rating) ? DefColor : DefaultColor,
+                verticalAlign: "middle",
+              }}
+              onClick={(e) => handleStarClick(idx, e)}
             >
               <clipPath id={`${item}StarClip-${uniqueId}`}>
                 <rect width={`${ratesResArr[idx]}`} height="512" />
@@ -78,4 +95,4 @@ const Star = (props: StarProps) => {
   );
 };
 
-export default Star;
+export default StarInput;
