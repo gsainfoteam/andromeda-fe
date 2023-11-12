@@ -2,7 +2,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import SelectButton from "./SelectButton";
 
 export default {
-  title: "Atoms/SelectButton/SelectButton",
+  title: "molecules/selectButton/SelectButton",
   component: SelectButton,
 } as Meta<typeof SelectButton>;
 

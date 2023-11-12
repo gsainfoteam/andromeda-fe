@@ -4,7 +4,7 @@ import Font from "src/styles/fonts";
 import styled from "styled-components";
 
 import colorSet from "../../styles/color-set";
-import Text from "../text/Text";
+import Text from "../../atoms/text/Text";
 
 interface SelectProps {
   minWidth?: React.CSSProperties["width"];
@@ -46,11 +46,18 @@ const Option = styled(Item)`
 `;
 
 const DropdownWrapper = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
+  z-index: 1;
+  :focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
 `;
 
 const SelectButton = ({
@@ -69,7 +76,7 @@ const SelectButton = ({
   };
 
   return (
-    <div style={{ width: "fit-content" }}>
+    <div style={{ width: "fit-content", position: "relative" }}>
       <Button
         value={selected}
         onClick={handleClickButton}
