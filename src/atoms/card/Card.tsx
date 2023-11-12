@@ -1,10 +1,15 @@
 import colorSet from "src/styles/color-set";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export interface CardProps {
+export enum CardVariant {
+  hilightedGreen = "hilightedGreen",
+  hilightedPurple = "hilightedPurple",
+}
+
+interface CardProps {
   width?: React.CSSProperties["width"];
   height?: React.CSSProperties["height"];
-  hilight: boolean;
+  variant?: CardVariant;
 }
 
 const Card = styled.div<CardProps>`
@@ -16,10 +21,23 @@ const Card = styled.div<CardProps>`
 
   background-color: ${colorSet.card};
   border-radius: 10px;
-  box-shadow: ${({ hilight }) =>
-    hilight
-      ? `0 0 0 3px ${colorSet.galactic_green}`
-      : `0 0 0 3px ${colorSet.deselected}`};
+
+  ${({ variant }) => {
+    switch (variant) {
+      case CardVariant.hilightedGreen:
+        return css`
+          box-shadow: 0 0 0 3px ${colorSet.galactic_green};
+        `;
+      case CardVariant.hilightedPurple:
+        return css`
+          box-shadow: 0 0 0 3px ${colorSet.galactic_purple};
+        `;
+      default:
+        return css`
+          box-shadow: 0 0 0 3px ${colorSet.deselected};
+        `;
+    }
+  }}
 `;
 
 export default Card;

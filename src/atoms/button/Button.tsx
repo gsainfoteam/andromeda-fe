@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 import colorSet from "../../styles/color-set";
 
-enum Variant {
+export enum ButtonVariant {
   outlined = "outlined",
   deselected = "deselected",
   contained = "contained",
@@ -14,7 +14,7 @@ interface ButtonProps {
   height?: React.CSSProperties["height"];
   gradient?: React.CSSProperties["backgroundColor"];
   gradientBorder?: React.CSSProperties["backgroundColor"];
-  variant?: Variant;
+  variant?: ButtonVariant;
 }
 
 const Button = styled.button<ButtonProps>`
@@ -32,7 +32,7 @@ const Button = styled.button<ButtonProps>`
 
   ${({ variant }) => {
     switch (variant) {
-      case Variant.contained:
+      case ButtonVariant.contained:
         return css`
           border: none;
           box-shadow: none;
@@ -44,13 +44,13 @@ const Button = styled.button<ButtonProps>`
           }
         `;
 
-      case Variant.outlined:
+      case ButtonVariant.outlined:
         return css`
           background: transparent;
           box-shadow: 0 0 0 2px ${colorSet.galactic_green} inset;
         `;
 
-      case Variant.deselected:
+      case ButtonVariant.deselected:
         return css`
           box-shadow: none;
           background: ${colorSet.background};

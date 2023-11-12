@@ -10,17 +10,21 @@ export default {
 const Template: StoryFn<typeof Card> = (args) => <Card {...args} />;
 
 export const Default = Template.bind({});
-
 Default.args = {
   width: "100px",
   height: "100px",
-  hilight: false,
 };
 
-export const Hilight = Template.bind({});
-
-Hilight.args = {
+export const HilightedGreen = Template.bind({});
+HilightedGreen.args = {
   width: "100px",
   height: "100px",
-  hilight: true,
+  variant: "hilightedGreen",
+};
+
+export const HilightedPurple = Template.bind({});
+HilightedPurple.args = {
+  width: "100px",
+  height: "100px",
+  variant: "hilightedPurple",
 };

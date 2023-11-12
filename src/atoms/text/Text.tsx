@@ -38,6 +38,13 @@ const Text = styled.p<TextProps>`
         `;
       case Font.Schweiz:
         return css`
+          @font-face {
+            font-family: "Schweiz";
+            src: url("../src/assets/fonts/Schweiz.otf") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+          }
+
           font-family: "Schweiz", sans-serif;
         `;
     }

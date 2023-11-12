@@ -1,11 +1,10 @@
 import { Meta, StoryFn } from "@storybook/react";
+import IconButton from "./IconButton";
 import Icons from "src/assets/Icons";
 import colorSet from "src/styles/color-set";
 
-import IconButton from "./IconButton";
-
 export default {
-  title: "molecules/IconButton/IconButton",
+  title: "molecules/iconButton/IconButton",
   component: IconButton,
 } as Meta<typeof IconButton>;
 
@@ -15,5 +14,6 @@ export const Default = Template.bind({});
 
 Default.args = {
   text: "Button",
-  icon: <Icons.Filter size="20px" fill={colorSet.titleText} />,
+  fontSize: "20px",
+  icon: <Icons.Filter size="24px" fill={colorSet.titleText} />,
 };
